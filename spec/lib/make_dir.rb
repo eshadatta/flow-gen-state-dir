@@ -3,13 +3,10 @@ require 'open3'
 require 'pry'
 require 'yaml'
 require 'fileutils'
-# make constants of path var
+
 CMD = "ruby lib/make_dir.rb".freeze
 ROOT_PATH = "test"
-
-def set_vars
-  state_dir_info = "install/.flow/state-dir.yml"
-end
+STATE_DIR_INFO = "install/.flow/state-dir.yml"
 
 def set_cmd(file)
   cmd = "#{CMD} #{ROOT_PATH} #{file}"
@@ -17,9 +14,8 @@ def set_cmd(file)
 end
 
 def get_dirs
-  file = set_vars
-  chk_dirs = YAML.load_file(file)
-  results = set_cmd(file)
+  chk_dirs = YAML.load_file(STATE_DIR_INFO)
+  results = set_cmd(STATE_DIR_INFO)
   dirs = chk_dirs.keys.collect { |dir| "#{ROOT_PATH}/#{dir}" }
   [dirs,results]
 end
