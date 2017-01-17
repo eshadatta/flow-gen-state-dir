@@ -1,0 +1,26 @@
+#!/bin/bash
+. conf/flow_state_dirs.conf
+
+show_use() {
+  echo "The script needs the following to work:"
+  echo ""
+  echo "An environment variable pointing to the root path of the directories:"
+  echo "export FLOW_STATE_DIR_ROOT='/path/to/state/dirs'"
+  echo ""
+  echo ""
+  echo "A file in $FLOW_INFO"
+}
+
+chk_vars_files() {
+
+  : ${FLOW_STATE_DIR_ROOT:?'Please set environment variable to point to directory path'}
+
+  if [[ ! -e $HOME/.flow/state-dir.yml ]]; then
+    echo "File missing here: $FLOW_INFO"
+    exit 1
+  fi
+
+}
+
+chk_vars_files
+~/.rvm/wrappers/${RVM_RUBY_VERSION}@${RVM_RUBY_GEMSET}/ruby $SCRIPT $FLOW_STATE_DIR_ROOT $FLOW_INFO

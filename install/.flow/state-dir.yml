@@ -1,0 +1,20 @@
+Queued:
+  phase: digitization
+  step: digitization
+  status: queued
+Processing:
+  phase: digitization
+  step: digitization
+  status: active
+QC:
+  phase: digitization
+  step: qc
+  status: active
+DoubleCheck:
+  phase: digitization
+  step: qc
+  status: error
+ToServer:
+  phase: upload
+  step: packaging
+  status: queued
