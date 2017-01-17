@@ -10,7 +10,7 @@ begin
 
   desc "creates state directories"
   task :setup do
-    sh "./create_flow_state_dirs"
+    sh "bin/create_flow_state_dirs"
   end
 
 
